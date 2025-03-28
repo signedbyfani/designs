@@ -1,0 +1,29 @@
+{
+  "name": "astro-portfolio",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev --open",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^1.1.3",
+    "@astrojs/tailwind": "^5.0.2",
+    "@astrojs/vercel": "^5.1.0",
+    "@fontsource/geist-mono": "^5.0.3",
+    "astro": "^3.3.4",
+    "lucide-astro": "^0.363.0",
+    "sharp": "^0.33.5",
+    "tailwindcss": "^3.3.5",
+    "tailwindcss-animated": "^1.0.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.5",
+    "prettier-plugin-astro": "^0.12.1",
+    "prettier-plugin-astro-organize-imports": "^0.4.8",
+    "prettier-plugin-tailwindcss": "^0.5.6"
+  }
+}

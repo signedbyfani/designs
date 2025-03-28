@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Aspekta";
+  src: url("/Aspekta.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+html {
+  @apply font-sans antialiased transition-colors;
+  text-rendering: optimizeLegibility;
+  scrollbar-gutter: stable;
+  font-family: 'Aspekta', sans-serif;
+}
+
+body {
+  @apply bg-white font-medium text-neutral-500;
+}
+
+h1,
+h2 {
+  @apply font-semibold text-[1.125rem] text-black;
+}
+
+::-moz-selection {
+  @apply bg-neutral-100 text-accent;
+}
+
+::selection {
+  @apply bg-neutral-100 text-accent;
+}
+
+code,
+time {
+  font-family: "Geist Mono", monospace;
+}

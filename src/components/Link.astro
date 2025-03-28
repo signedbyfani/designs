@@ -1,0 +1,20 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  external?: boolean;
+  underline?: boolean;
+  arrow?: boolean;
+}
+
+const { title, href, external = true, underline = true, arrow = true } = Astro.props;
+---
+
+<a 
+  href={href} 
+  class={`text-neutral-600 hover:text-black transition ${underline ? 'underline underline-offset-4' : ''} flex items-center gap-1`}
+  {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+>
+  {title}
+  {arrow && <span>↗</span>}
+</a>

@@ -1,0 +1,13 @@
+---
+const { shouldWrapMdx } = Astro.props;
+---
+
+<div class="relative mx-auto max-w-prose">
+  {
+    !shouldWrapMdx ? (
+      <slot />
+    ) : (
+        <slot />
+    )
+  }
+</div>

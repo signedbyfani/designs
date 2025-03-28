@@ -1,0 +1,95 @@
+---
+import Container from "@components/Container.astro";
+import Content from "@components/content/Content.astro";
+import Link from "@components/Link.astro";
+import Layout from "@layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import type { ImageMetadata } from "astro";
+
+const mediaFiles = import.meta.glob<{ default: ImageMetadata | string }>(
+  "/src/photos/*.{jpeg,jpg,png,gif,webp,mp4,webm}",
+  { eager: false }
+);
+
+const importFns: Array<
+  () => Promise<{ default: ImageMetadata | string }>
+> = Object.values(mediaFiles);
+
+const loadedMedia = await Promise.all(
+  importFns.map(async (importFn) => {
+    const module = await importFn();
+    return module.default;
+  })
+);
+---
+
+<Layout title="Designed by Fanindra">
+  <Container shouldWrapMdx={false}>
+    <header
+      class="mx-auto mt-8 animate-slidein opacity-0 [--slidein-delay:0ms]">
+      <div class="flex justify-between">
+        <h1>
+          <span class="text-accent">Visuals</span> by Fanindra
+          Maharana
+        </h1>
+      </div>
+    </header>
+    <section
+      class="my-8 animate-slidein opacity-0 [--slidein-delay:200ms]">
+      Here are some of my design explorations, showcasing a variety of work, including Framer website designs, UI concepts, coursework explorations, animations, typography, physical experiences, posters, and more.
+      <div class="my-2">
+        <Link
+          href="https://fanindra.xyz/"
+          title="Check out my portfolio website"
+        />
+      </div>
+      <div
+        class="mt-8 animate-slidein opacity-0 [--slidein-delay:400ms]">
+        <Content title="Get in touch">
+          <ul role="list" class="flex flex-wrap gap-6">
+            <Link
+              href="https://www.linkedin.com/in/fanindra-m/"
+              title="LinkedIn"
+            />
+
+            <Link
+              href="https://www.behance.net/imfanindra"
+              title="Behance"
+            />
+
+            <Link
+              href="mailto:imfanindra@gmail.com"
+              title="E-mail"
+            />
+          </ul>
+        </Content>
+      </div>
+    </section>
+  </Container>
+  <div
+    class="mt-4 animate-slidein columns-1 opacity-0 [--slidein-delay:600ms] lg:w-full lg:columns-3 lg:gap-2">
+    {
+      loadedMedia.map((media) => (
+        <div class="inline-block w-full break-inside-avoid">
+          {typeof media === "string" && (media.endsWith(".mp4") || media.endsWith(".webm")) ? (
+            <video
+              class="rounded-lg"
+              src={media}
+              controls
+              autoplay
+              loop
+              muted
+            />
+          ) : (
+            <Image
+              class="rounded-lg"
+              src={media}
+              alt="Design Exploration Tile"
+            />
+          )}
+        </div>
+      ))
+    }
+  </div>
+</Layout>

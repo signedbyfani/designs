@@ -1,6 +1,7 @@
 ---
 import "@fontsource/geist-mono";
 import "@styles/globals.css";
+import Analytics from '@vercel/analytics/astro'
 
 const { title } = Astro.props;
 
@@ -54,6 +55,7 @@ const metaTitle = "Fanindra Maharana - More Designs";
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
+    <Analytics/>
   </head>
 
   <body class="m-8">

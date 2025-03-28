@@ -14,6 +14,7 @@
     "@astrojs/tailwind": "^5.0.2",
     "@astrojs/vercel": "^5.1.0",
     "@fontsource/geist-mono": "^5.0.3",
+    "@vercel/analytics": "^1.5.0",
     "astro": "^3.3.4",
     "lucide-astro": "^0.363.0",
     "sharp": "^0.33.5",
